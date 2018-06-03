@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingEnd="16dp"
     android:paddingLeft="16dp"
@@ -80,7 +80,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:textColor="#232f34"
-            android:textSize="12sp"
+            android:textSize="14sp"
             tools:text="Long placeholder location that should wrap to more than 2 lines of text" />
 
     </LinearLayout>
@@ -94,5 +94,11 @@
         android:layout_marginLeft="16dp" />
 
     </LinearLayout>
+    <TextView
+        android:id="@+id/byline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="By Author"
+        android:textSize="12sp"/>
 
 </LinearLayout>
