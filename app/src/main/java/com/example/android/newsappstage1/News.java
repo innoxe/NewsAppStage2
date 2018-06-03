@@ -63,7 +63,7 @@ public class News {
     /**
      * Returns the headline of the news.
      */
-    public String getHealine() {
+    public String getHeadline() {
         return mNewsHeadline;
     }
 
@@ -77,7 +77,7 @@ public class News {
     /**
      * Returns the name of the news author.
      */
-    public String getNewsByline() {
+    public String getByline() {
         return mNewsByline;
     }
 
