@@ -32,7 +32,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String USGS_REQUEST_URL =
             "http://content.guardianapis.com/search?order-by=newest&show-fields=trailText,byline,thumbnail&page-size=10&api-key=test";
     /**
-     * Adapter for the list of earthquakes
+     * Adapter for the list of news
      */
     private NewsAdapter mAdapter;
 
@@ -64,14 +64,14 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // Find the current earthquake that was clicked on
+                // Find the current news that was clicked on
                 News currentNews = mAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
-                Uri earthquakeUri = Uri.parse(currentNews.getUrl());
+                Uri newsUri = Uri.parse(currentNews.getUrl());
 
-                // Create a new intent to view the earthquake URI
-                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
+                // Create a new intent to view the news URI
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsUri);
 
                 // Send the intent to launch a new activity
                 startActivity(websiteIntent);
@@ -96,7 +96,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         } else {
             View loadingIndicator = findViewById(R.id.loading_indicator);
             loadingIndicator.setVisibility(View.GONE);
-            // Set empty state text to display "No earthquakes found."
+            // Set empty state text to display "Sorry! There isn\'t news ad the moment."
             mEmptyStateTextView.setText(R.string.no_internet_connection);
         }
 
@@ -119,7 +119,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Set empty state text to display message when there isn't news
         mEmptyStateTextView.setText(R.string.no_news);
-        // Clear the adapter of previous earthquake data
+        // Clear the adapter of previous news data
         mAdapter.clear();
 
         // This will trigger the ListView to update.

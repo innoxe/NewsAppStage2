@@ -20,10 +20,13 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class NewsAdapter extends ArrayAdapter<News> {
 
@@ -38,8 +41,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
     }
 
     /**
-     * Returns a list item view that displays information about the earthquake at the given position
-     * in the list of earthquakes.
+     * Returns a list item view that displays the news at the given position
+     * in the list of news.
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -129,15 +132,15 @@ public class NewsAdapter extends ArrayAdapter<News> {
         if (currentNews.getPublicationDate() != null) {
             dateView = listItemView.findViewById(R.id.date);
             // Format the date string (i.e. "Mar 3, 1984")
-            String formattedDate = formatDate(currentNews.getPublicationDate()).concat(",");
-            // Display the date of the current earthquake in that TextView
+            String formattedDate = formatDate(currentNews.getPublicationDate());
+            // Display the date of the news in that TextView
             dateView.setText(formattedDate);
 
             // Find the TextView with view ID time
             timeView = listItemView.findViewById(R.id.time);
             // Format the time string (i.e. "4:30PM")
             String formattedTime = formatTime(currentNews.getPublicationDate());
-            // Display the time of the current earthquake in that TextView
+            // Display the time of the news in that TextView
             timeView.setText(formattedTime);
 
             //Set date & time views as visible
@@ -156,10 +159,11 @@ public class NewsAdapter extends ArrayAdapter<News> {
         /**
      * Return the formatted date string (i.e. "Mar 3, 1984") from a Date object.
      */
+        /*
     private String formatDate(Date dateObject) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
         return dateFormat.format(dateObject);
-    }
+    }*/
 
     /**
      * Return the formatted date string (i.e. "4:30 PM") from a Date object.
@@ -167,6 +171,16 @@ public class NewsAdapter extends ArrayAdapter<News> {
     private String formatTime(Date dateObject) {
         SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
         return timeFormat.format(dateObject);
+    }
+
+    private String formatDate(Date dateObject) {
+
+        DateFormat dateFormatter;
+
+        dateFormatter = DateFormat.getDateInstance(DateFormat.DEFAULT, Locale.getDefault());
+
+        return dateFormatter.format(dateObject);
+
     }
 
 
