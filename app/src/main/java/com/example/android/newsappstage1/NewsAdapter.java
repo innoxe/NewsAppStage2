@@ -34,7 +34,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
         super(context, 0, news);
     }
 
-
     /**
      * Returns a list item view that displays information about the earthquake at the given position
      * in the list of earthquakes.
