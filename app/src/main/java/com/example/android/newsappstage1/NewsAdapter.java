@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.GradientDrawable;
 import android.os.StrictMode;
 import android.support.v4.content.ContextCompat;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +65,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // Find the TextView with view ID lead
         TextView trailView = listItemView.findViewById(R.id.trailText);
         // Display the healine of the current news in that TextView
-        trailView.setText(currentNews.getHeadline());
+        // Note: some headline could have html text.
+        trailView.setText(Html.fromHtml(currentNews.getTrailText()));
 
         // Find the TextView with view ID section_name
         TextView sectionNameView = listItemView.findViewById(R.id.section_name);
@@ -76,7 +78,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView authorNameView = listItemView.findViewById(R.id.byline);
         // If the field byline has content display else not display the author name of the current news in that TextView
         if (currentNews.getByline() != "") {
-            authorNameView.setText(currentNews.getByline());
+            String byAuthor = "By ".concat(currentNews.getByline());
+            authorNameView.setText(byAuthor);
             //Set byline view as visible
             authorNameView.setVisibility(View.VISIBLE);
         } else {
