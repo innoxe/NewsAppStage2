@@ -157,7 +157,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         @Override
         public List<News> loadInBackground() {
             //return QueryUtils.extractFeatureFromJson(mUrl);
-            return QueryUtils.fetchEarthquakeData(mUrl);
+            return QueryUtils.fetchNewsData(mUrl);
 
         }
     }

@@ -35,7 +35,7 @@ public class QueryUtils {
     /**
      * Send query to Guardian API and return a list of {@link News} objects.
      */
-    public static List<News> fetchEarthquakeData(String requestUrl) {
+    public static List<News> fetchNewsData(String requestUrl) {
 
         // Create URL object
         URL url = createUrl(requestUrl);
@@ -86,7 +86,7 @@ public class QueryUtils {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the news JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -118,7 +118,7 @@ public class QueryUtils {
      */
     private static ArrayList<News> extractNews(String newsJSON) {
 
-        // Create an empty ArrayList that we can start adding earthquakes to
+        // Create an empty ArrayList that we can start adding news to
         ArrayList<News> newsList = new ArrayList<>();
 
         // Try to parse the SAMPLE_JSON_RESPONSE. If there's a problem with the way the JSON
@@ -161,9 +161,7 @@ public class QueryUtils {
 
 
                 // Grab "Fields" element with other request pieces of information
-                JSONArray fields = currentResult.getJSONArray("fields");
-
-                JSONObject currentField = fields.getJSONObject(0);
+                JSONObject currentField = currentResult.getJSONObject("fields");
 
                 // Extract the value of fields "trailText". A lead paragraph.
                 String trailText = currentField.getString("trailText");
@@ -176,11 +174,11 @@ public class QueryUtils {
 
 
 
-                // Create a new {@link Earthquake} object with the magnitude, location, time,
+                // Create a new {@link News} object with the all key.
                 // and url from the JSON response.
                 News newsObj = new News(headline, trailText, byline, sectionName, dateNews, webUrl, thumbnail );
 
-                // Add the new {@link Earthquake} to the list of earthquakes.
+                // Add the new {@link News} to the list of newsList.
                 newsList.add(newsObj);
 
             }
@@ -189,10 +187,10 @@ public class QueryUtils {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
-            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
+            Log.e("QueryUtils", "Problem parsing the news JSON results", e);
         }
 
-        // Return the list of earthquakes
+        // Return the list of news
         return newsList;
     }
 

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.GradientDrawable;
+import android.os.StrictMode;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,9 +89,19 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // Display the image for the current news in that ImageView
         if(currentNews.getImage() != "") {
 
-            Bitmap bmp = getBitmapfromUrl(currentNews.getImage());
+            //Avoids android.os.NetworkOnMainThreadException.
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
 
-            imageView.setImageBitmap(bmp);
+            Bitmap image = null;
+            try {
+                URL url = new URL(currentNews.getImage());
+                image = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            } catch(IOException e) {
+                System.out.println(e);
+            }
+
+            imageView.setImageBitmap(image);
             //Make sure the view is visible
             imageView.setVisibility(View.VISIBLE);
         }
@@ -156,26 +168,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
 
 
-    public Bitmap getBitmapfromUrl(String imageUrl)
-    {
-        try
-        {
-            URL url = new URL(imageUrl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap bitmap = BitmapFactory.decodeStream(input);
-            return bitmap;
 
-        } catch (Exception e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return null;
-
-        }
-    }
 
 
 }
