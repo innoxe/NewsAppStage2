@@ -111,15 +111,7 @@
 
         <TextView
             android:id="@+id/headline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="sans-serif-medium"
-            android:maxLines="2"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:textColor="#232f34"
-            android:textSize="12sp"
+            style="@style/HeadlineTextView"
             tools:text="HEADLINE" />
 
         <TextView
