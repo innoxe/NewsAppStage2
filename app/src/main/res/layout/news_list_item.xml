@@ -18,7 +18,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:orientation="vertical">
 
     <LinearLayout
@@ -36,16 +35,7 @@
             android:contentDescription="@string/ic_section"/>
         <TextView
             android:id="@+id/section_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginEnd="4dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            style="@style/SectionTextView"
             tools:text="Politics"/>
         <LinearLayout
             android:id="@+id/wrapper_date_time"
@@ -64,31 +54,22 @@
             <!-- Date news -->
             <TextView
                 android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                tools:text="Mar 6, 2010"
-                android:paddingRight="12dp"
-                android:paddingEnd="12dp"
-                android:paddingLeft="4dp"
-                android:paddingStart="4dp"/>
+                style="@style/DateTimeTextView"
+                tools:text="Mar 6, 2010"/>
 
             <ImageView
                 android:layout_width="14dp"
                 android:layout_height="14dp"
                 android:layout_gravity="center_vertical|end"
+                android:layout_marginLeft="12dp"
                 android:src="@drawable/ic_time"
                 android:contentDescription="@string/ic_time"/>
 
             <!-- Time news-->
             <TextView
                 android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                tools:text="10:00 AM"
-                android:paddingLeft="4dp"
-                android:paddingStart="4dp"/>
+                style="@style/DateTimeTextView"
+                tools:text="10:00 AM"/>
 
         </LinearLayout>
 
