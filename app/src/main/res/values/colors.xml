@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#29434e</color>
     <color name="colorAccent">#819ca9</color>
 
+    <!-- Headline and trail color  -->
+    <color name="colorHeadlineTrail">#232f34</color>
+
+
 </resources>

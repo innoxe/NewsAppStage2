@@ -101,7 +101,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         }
 
 
-
     }
 
     @Override

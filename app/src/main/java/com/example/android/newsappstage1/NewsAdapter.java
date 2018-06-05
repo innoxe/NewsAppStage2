@@ -67,9 +67,9 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         //It's better prevents layout problem when the string is too long.
         String textSection;
-        if(currentNews.getSectionName().length()>25){
-            textSection = currentNews.getSectionName().substring(0,25).concat(" ...");
-        }else {
+        if (currentNews.getSectionName().length() > 25) {
+            textSection = currentNews.getSectionName().substring(0, 25).concat(" ...");
+        } else {
             textSection = currentNews.getSectionName();
         }
 
@@ -80,20 +80,19 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // Find the TextView with view ID byline (News Author)
         TextView authorNameView = listItemView.findViewById(R.id.byline);
         // If the field byline has content display else not display the author name of the current news in that TextView
-        if (currentNews.getByline() != "") {
+        if (!currentNews.getByline().equals("")) {
             String byAuthor = "By ".concat(currentNews.getByline());
             authorNameView.setText(byAuthor);
-            //Set byline view as visible
-            authorNameView.setVisibility(View.VISIBLE);
         } else {
-            //Set byline view as gone
-            authorNameView.setVisibility(View.GONE);
+            //Set byline with text "No author"
+            authorNameView.setText(R.string.no_author);
         }
 
         // Find the ImageView with view ID image
         ImageView imageView = listItemView.findViewById(R.id.image);
+
         // Display the image for the current news in that ImageView
-        if (currentNews.getImage() != "") {
+        if (!currentNews.getImage().equals("")) {
 
             //Avoids android.os.NetworkOnMainThreadException.
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -120,10 +119,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView timeView = null;
 
         if (currentNews.getPublicationDate() != null) {
-
             // Find the date TextView
             dateView = listItemView.findViewById(R.id.date);
-
         }
 
 
@@ -161,7 +158,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
         SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
         return timeFormat.format(dateObject);
     }
-
 
     /**
      * Return the formatted date string from a Date object with the right local pattern (i.e. "jul 3, 2018" or  for italian setting "3 giu 2018").

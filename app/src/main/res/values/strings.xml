@@ -13,4 +13,7 @@
     <string name="ic_time">Icon time news</string>
     <string name="img_news">Image of current news</string>
 
+    <!-- String message app -->
+    <string name="no_author">No author</string>
+
 </resources>

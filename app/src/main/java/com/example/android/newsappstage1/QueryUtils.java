@@ -161,7 +161,9 @@ public class QueryUtils {
                 String trailText = currentField.getString("trailText");
 
                 // Extract the value of field "byline". Fullname Author of news
-                String byline = currentField.getString("byline");
+                //String byline = currentField.getString("byline");
+                String byline = !currentField.isNull("byline") ? currentField.getString("byline") : "";
+
 
                 // Extract the value of "thumbanil"
                 String thumbnail = currentField.getString("thumbnail");
