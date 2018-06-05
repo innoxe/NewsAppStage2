@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">News App Stage 1</string>
+    <string name="no_news">Mi dispiace! Al momento non c\'è nessuna notizia.</string>
+    <string name="no_internet_connection">Mi dispiace! Non c\'è connessione internet.</string>
+    <string name="ic_section">Icona sezione notizia.</string>
+    <string name="ic_date">Icona data notizia</string>
+    <string name="ic_time">Icona ora notizia</string>
+    <string name="img_news">Image della notiza corrente</string>
+    <string name="no_author">Nessun autore</string>
+</resources>

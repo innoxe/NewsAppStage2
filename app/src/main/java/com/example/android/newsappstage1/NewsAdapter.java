@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.StrictMode;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,7 +104,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
                 URL url = new URL(currentNews.getImage());
                 image = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             } catch (IOException e) {
-                System.out.println(e);
+
+                Log.e(QueryUtils.class.getSimpleName(), "Problem decodeStream.", e);
             }
 
             imageView.setImageBitmap(image);
