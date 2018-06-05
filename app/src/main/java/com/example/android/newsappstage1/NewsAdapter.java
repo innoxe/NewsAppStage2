@@ -24,6 +24,12 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.chrono.IsoChronology;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -116,7 +122,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
             imageView.setVisibility(View.GONE);
         }
 
-
         // TextView date and time
         TextView dateView = null;
         TextView timeView = null;
@@ -156,32 +161,25 @@ public class NewsAdapter extends ArrayAdapter<News> {
         return listItemView;
     }
 
-        /**
-     * Return the formatted date string (i.e. "Mar 3, 1984") from a Date object.
-     */
-        /*
-    private String formatDate(Date dateObject) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
-        return dateFormat.format(dateObject);
-    }*/
-
     /**
      * Return the formatted date string (i.e. "4:30 PM") from a Date object.
      */
     private String formatTime(Date dateObject) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
         return timeFormat.format(dateObject);
     }
 
+
+    /**
+     * Return the formatted date string from a Date object with the right local pattern (i.e. "jul 3, 2018" or  for italian setting "3 giu 2018").
+     */
     private String formatDate(Date dateObject) {
 
-        DateFormat dateFormatter;
-
-        dateFormatter = DateFormat.getDateInstance(DateFormat.DEFAULT, Locale.getDefault());
-
-        return dateFormatter.format(dateObject);
-
+        final String pattern = ((SimpleDateFormat) DateFormat.getDateInstance(DateFormat.DEFAULT, Locale.getDefault())).toPattern();
+        SimpleDateFormat dateFormat = new SimpleDateFormat(pattern, Locale.getDefault());
+        return dateFormat.format(dateObject);
     }
+
 
 
 
