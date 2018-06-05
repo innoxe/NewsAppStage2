@@ -6,4 +6,11 @@
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">Sorry! No internet connection.</string>
+
+    <!-- String description image -->
+    <string name="ic_section">Icon section news</string>
+    <string name="ic_date">Icon date news</string>
+    <string name="ic_time">Icon time news</string>
+    <string name="img_news">Image of current news</string>
+
 </resources>
