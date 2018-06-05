@@ -3,11 +3,8 @@ package com.example.android.newsappstage1;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.GradientDrawable;
 import android.os.StrictMode;
-import android.support.v4.content.ContextCompat;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,20 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
-import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.chrono.IsoChronology;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.FormatStyle;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -40,7 +27,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
      * Constructs a new {@link NewsAdapter}.
      *
      * @param context of the app
-     * @param news is the list of the news, which is the data source of the adapter
+     * @param news    is the list of the news, which is the data source of the adapter
      */
     public NewsAdapter(Context context, List<News> news) {
         super(context, 0, news);
@@ -52,8 +39,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-
 
         // Check if there is an existing list item view (called convertView) that we can reuse,
         // otherwise, if convertView is null, then inflate a new list item layout.
@@ -79,8 +64,17 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         // Find the TextView with view ID section_name
         TextView sectionNameView = listItemView.findViewById(R.id.section_name);
+
+        //It's better prevents layout problem when the string is too long.
+        String textSection;
+        if(currentNews.getSectionName().length()>25){
+            textSection = currentNews.getSectionName().substring(0,25).concat(" ...");
+        }else {
+            textSection = currentNews.getSectionName();
+        }
+
         // Display the section name of the current news in that TextView
-        sectionNameView.setText(currentNews.getSectionName());
+        sectionNameView.setText(textSection);
 
 
         // Find the TextView with view ID byline (News Author)
@@ -99,7 +93,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // Find the ImageView with view ID image
         ImageView imageView = listItemView.findViewById(R.id.image);
         // Display the image for the current news in that ImageView
-        if(currentNews.getImage() != "") {
+        if (currentNews.getImage() != "") {
 
             //Avoids android.os.NetworkOnMainThreadException.
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -109,15 +103,14 @@ public class NewsAdapter extends ArrayAdapter<News> {
             try {
                 URL url = new URL(currentNews.getImage());
                 image = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            } catch(IOException e) {
+            } catch (IOException e) {
                 System.out.println(e);
             }
 
             imageView.setImageBitmap(image);
             //Make sure the view is visible
             imageView.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             //Otherwise hide the ImageView (set visibility to GONE)
             imageView.setVisibility(View.GONE);
         }
@@ -179,11 +172,5 @@ public class NewsAdapter extends ArrayAdapter<News> {
         SimpleDateFormat dateFormat = new SimpleDateFormat(pattern, Locale.getDefault());
         return dateFormat.format(dateObject);
     }
-
-
-
-
-
-
 
 }

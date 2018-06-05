@@ -31,7 +31,6 @@ public class QueryUtils {
     private QueryUtils() {
     }
 
-
     /**
      * Send query to Guardian API and return a list of {@link News} objects.
      */
@@ -52,10 +51,8 @@ public class QueryUtils {
         List<News> newsList = extractNews(jsonResponse);
 
         // Return the list of news
-
         return newsList;
     }
-
 
     /**
      * Make an HTTP request to the given URL and return a String as the response.
@@ -97,7 +94,6 @@ public class QueryUtils {
         }
         return jsonResponse;
     }
-
 
     /**
      * Returns new URL object from the given string URL.
@@ -145,10 +141,9 @@ public class QueryUtils {
                 // Extract the key value "webURL". The webpage of article.
                 String webUrl = currentResult.getString("webUrl");
 
-                // Extract the key value "webPublicationDate" with date and hour of publication
+                // Extract and parse default pattern of the key value "webPublicationDate" with date and hour of publication
                 String webPublicationDate = currentResult.getString("webPublicationDate");
                 SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", java.util.Locale.getDefault());
-
 
                 Date dateNews = null;
                 try {
@@ -158,7 +153,6 @@ public class QueryUtils {
                     Log.e(LOG_TAG, "Problem parsing the news date", e);
 
                 }
-
 
                 // Grab "Fields" element with other request pieces of information
                 JSONObject currentField = currentResult.getJSONObject("fields");
@@ -171,8 +165,6 @@ public class QueryUtils {
 
                 // Extract the value of "thumbanil"
                 String thumbnail = currentField.getString("thumbnail");
-
-
 
                 // Create a new {@link News} object with the all key.
                 // and url from the JSON response.
@@ -194,9 +186,6 @@ public class QueryUtils {
         return newsList;
     }
 
-
-
-
     /**
      * Convert the {@link InputStream} into a String which contains the
      * whole JSON response from the server.
@@ -214,9 +203,5 @@ public class QueryUtils {
         }
         return output.toString();
     }
-
-
-
-
 
 }
