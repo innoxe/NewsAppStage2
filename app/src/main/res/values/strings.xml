@@ -15,6 +15,8 @@
 
     <!-- String message app -->
     <string name="no_author">No author</string>
+    <string name="no_date">--/--/----</string>
+    <string name="no_time">"--:--"</string>
 
     <!-- Example data -->
     <string name="tools_section">Politcs</string>
@@ -23,6 +25,8 @@
     <string name="tools_headline">HEADLINE</string>
     <string name="tools_trail">Long placeholder trail news that should wrap to more than 2 lines of text </string>
     <string name="tools_byAuthor">By Author</string>
+
+
 
 
 </resources>

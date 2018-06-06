@@ -73,10 +73,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
         } else {
             textSection = currentNews.getSectionName();
         }
-
         // Display the section name of the current news in that TextView
         sectionNameView.setText(textSection);
-
 
         // Find the TextView with view ID byline (News Author)
         TextView authorNameView = listItemView.findViewById(R.id.byline);
@@ -109,45 +107,33 @@ public class NewsAdapter extends ArrayAdapter<News> {
             }
 
             imageView.setImageBitmap(image);
-            //Make sure the view is visible
-            imageView.setVisibility(View.VISIBLE);
+
         } else {
-            //Otherwise hide the ImageView (set visibility to GONE)
-            imageView.setVisibility(View.GONE);
-        }
-
-        // TextView date and time
-        TextView dateView = null;
-        TextView timeView = null;
-
-        if (currentNews.getPublicationDate() != null) {
-            // Find the date TextView
-            dateView = listItemView.findViewById(R.id.date);
+            //Otherwise dysplay no image thumbnail
+            imageView.setImageResource(R.drawable.ic_no_image);
         }
 
 
+        // Find the TextView with view ID date
+        TextView dateView = listItemView.findViewById(R.id.date);
+        // Find the TextView with view ID time
+        TextView timeView = listItemView.findViewById(R.id.time);
+
         if (currentNews.getPublicationDate() != null) {
-            dateView = listItemView.findViewById(R.id.date);
             // Format the date string (i.e. "Mar 3, 1984")
             String formattedDate = formatDate(currentNews.getPublicationDate());
             // Display the date of the news in that TextView
             dateView.setText(formattedDate);
-
-            // Find the TextView with view ID time
-            timeView = listItemView.findViewById(R.id.time);
             // Format the time string (i.e. "4:30PM")
             String formattedTime = formatTime(currentNews.getPublicationDate());
             // Display the time of the news in that TextView
             timeView.setText(formattedTime);
-
-            //Set date & time views as visible
-            dateView.setVisibility(View.VISIBLE);
-            timeView.setVisibility(View.VISIBLE);
         } else {
-            //Set date & time views as gone
-            dateView.setVisibility(View.GONE);
-            timeView.setVisibility(View.GONE);
+            // Display symbol for no date and no time
+            dateView.setText(R.string.no_date);
+            timeView.setText(R.string.no_time);
         }
+
 
         // Return the list item view that is now showing the appropriate data
         return listItemView;

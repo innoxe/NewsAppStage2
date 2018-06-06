@@ -27,6 +27,13 @@ public class QueryUtils {
      */
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
+    /**
+     * Constant for the read and connection timeout
+     */
+    public static final int READ_TIMEOUT = 10000;
+    public static final int CONNECT_TIMEOUT = 15000;
+
+
 
     private QueryUtils() {
     }
@@ -69,14 +76,14 @@ public class QueryUtils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000 /* milliseconds */);
-            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setReadTimeout(READ_TIMEOUT /* milliseconds */);
+            urlConnection.setConnectTimeout(CONNECT_TIMEOUT /* milliseconds */);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
             // If the request was successful (response code 200),
             // then read the input stream and parse the response.
-            if (urlConnection.getResponseCode() == 200) {
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
@@ -133,40 +140,42 @@ public class QueryUtils {
                 //JSONObject properties = currentResult.getJSONObject("properties");
 
                 // Extract the kewy value "sectionName"
-                String sectionName = currentResult.getString("sectionName");
+                String sectionName = currentResult.optString("sectionName");
 
                 // Extract the key value "webTitle". This will be the headline
-                String headline = currentResult.getString("webTitle");
+                String headline = currentResult.optString("webTitle");
 
                 // Extract the key value "webURL". The webpage of article.
-                String webUrl = currentResult.getString("webUrl");
+                String webUrl = currentResult.optString("webUrl");
 
                 // Extract and parse default pattern of the key value "webPublicationDate" with date and hour of publication
-                String webPublicationDate = currentResult.getString("webPublicationDate");
-                SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", java.util.Locale.getDefault());
+                String webPublicationDate = currentResult.optString("webPublicationDate");
 
                 Date dateNews = null;
-                try {
-                    dateNews = parser.parse(webPublicationDate);
-                } catch (ParseException e) {
 
-                    Log.e(LOG_TAG, "Problem parsing the news date", e);
-
+                if (!webPublicationDate.equals("")) {
+                    SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", java.util.Locale.getDefault());
+                    try {
+                        dateNews = parser.parse(webPublicationDate);
+                    } catch (ParseException e) {
+                        Log.e(LOG_TAG, "Problem parsing the news date", e);
+                    }
                 }
 
                 // Grab "Fields" element with other request pieces of information
                 JSONObject currentField = currentResult.getJSONObject("fields");
 
                 // Extract the value of fields "trailText". A lead paragraph.
-                String trailText = currentField.getString("trailText");
+                String trailText = currentField.optString("trailText");
 
-                // Extract the value of field "byline". Fullname Author of news
-                //String byline = currentField.getString("byline");
-                String byline = !currentField.isNull("byline") ? currentField.getString("byline") : "";
+                // Extract the value of field "byline". Full name Author of news
+                // Prevent null value
+                String byline = !currentField.isNull("byline") ? currentField.optString("byline") : "";
 
 
-                // Extract the value of "thumbanil"
-                String thumbnail = currentField.getString("thumbnail");
+                // Extract the value of url thumbnail
+                // Prevent null value
+                String thumbnail = !currentField.isNull("thumbnail") ? currentField.optString("thumbnail") : "";
 
                 // Create a new {@link News} object with the all key.
                 // and url from the JSON response.
