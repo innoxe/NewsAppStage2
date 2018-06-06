@@ -39,6 +39,14 @@
         <item name="android:paddingLeft">4dp</item>
     </style>
 
+    <!-- Style icon ImageView. -->
+    <style name="IconImage">
+        <item name="android:layout_height">@dimen/dim_icon</item>
+        <item name="android:layout_width">@dimen/dim_icon</item>
+        <item name="android:layout_gravity">center_vertical|end</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
 
     <!-- Headline TextView. -->
     <style name="HeadlineTextView">
@@ -60,6 +68,29 @@
         <item name="android:maxLines">2</item>
         <item name="android:textColor">@color/colorHeadlineTrail</item>
         <item name="android:textSize">@dimen/big_text_size</item>
+    </style>
+
+    <!-- Byline TextView. -->
+    <style name="BylineTextView">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:layout_marginBottom">@dimen/default_distance</item>
+    </style>
+
+    <!-- News ImageView. -->
+    <style name="NewsImageView">
+        <item name="android:layout_height">@dimen/dim_image_news</item>
+        <item name="android:layout_width">@dimen/dim_image_news</item>
+        <item name="android:layout_marginBottom">@dimen/default_distance</item>
+        <item name="android:layout_gravity">center_vertical|center_horizontal</item>
+        <item name="android:scaleType">centerCrop</item>
+
+
     </style>
 
 

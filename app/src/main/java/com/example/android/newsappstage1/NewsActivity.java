@@ -64,7 +64,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // Find the current news that was clicked on
-                News currentNews = mAdapter.getItem(position);
+                News currentNews = (News) adapterView.getItemAtPosition(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri newsUri = Uri.parse(currentNews.getUrl());
@@ -81,8 +81,12 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        // Get details on the currently active default data network
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        NetworkInfo networkInfo = null;
+
+        if (connMgr != null) {
+            // Get details on the currently active default data network
+            networkInfo = connMgr.getActiveNetworkInfo();
+        }
 
 
         // If there is a network connection, we can fetch data
@@ -98,7 +102,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
             // Set empty state text to display "Sorry! There isn\'t news ad the moment."
             mEmptyStateTextView.setText(R.string.no_internet_connection);
         }
-
 
     }
 
@@ -141,7 +144,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
         private String mUrl;
 
-        public NewsLoader(Context context, String url) {
+        private NewsLoader(Context context, String url) {
             super(context);
             mUrl = url;
         }

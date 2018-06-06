@@ -54,8 +54,9 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         // Find the TextView with view ID headline
         TextView titleView = listItemView.findViewById(R.id.headline);
-        // Display the healine of the current news in that TextView
-        titleView.setText(currentNews.getHeadline());
+        // Display the headline of the current news in that TextView
+
+           titleView.setText(currentNews.getHeadline());
 
         // Find the TextView with view ID lead
         TextView trailView = listItemView.findViewById(R.id.trailText);

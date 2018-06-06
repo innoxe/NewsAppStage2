@@ -8,4 +8,13 @@
     <!-- Margin of the card -->
     <dimen name="margin_card">4dp</dimen>
 
+    <!-- Icon date time -->
+    <dimen name="dim_icon">14dp</dimen>
+
+    <!-- News image -->
+    <dimen name="dim_image_news">95dp</dimen>
+
+    <!-- app layout default margin and padding -->
+    <dimen name="default_distance">8dp</dimen>
+
 </resources>

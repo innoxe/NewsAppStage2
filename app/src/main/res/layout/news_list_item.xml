@@ -16,17 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:orientation="horizontal"
-            android:paddingEnd="12dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp">
+            android:paddingLeft="@dimen/default_distance"
+            android:paddingRight="@dimen/default_distance">
 
             <ImageView
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:layout_gravity="center_vertical|end"
+                style="@style/IconImage"
                 android:contentDescription="@string/ic_section"
-                android:src="@drawable/ic_stat_name"
-                android:scaleType="centerCrop"/>
+                android:src="@drawable/ic_stat_name" />
 
             <TextView
                 android:id="@+id/section_name"
@@ -37,16 +33,13 @@
                 android:id="@+id/wrapper_date_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:gravity="end">
 
                 <ImageView
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
-                    android:layout_gravity="center_vertical|end"
+                    style="@style/IconImage"
                     android:contentDescription="@string/ic_date"
-                    android:src="@drawable/ic_date"
-                    android:scaleType="centerCrop"/>
+                    android:src="@drawable/ic_date" />
 
                 <TextView
                     android:id="@+id/date"
@@ -54,14 +47,11 @@
                     tools:text="@string/tools_date" />
 
                 <ImageView
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
-                    android:layout_gravity="center_vertical|end"
+                    style="@style/IconImage"
                     android:layout_marginLeft="12dp"
                     android:layout_marginStart="12dp"
                     android:contentDescription="@string/ic_time"
-                    android:src="@drawable/ic_time"
-                    android:scaleType="centerCrop"/>
+                    android:src="@drawable/ic_time" />
 
                 <TextView
                     android:id="@+id/time"
@@ -73,10 +63,12 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/btnsLayout"
+            android:id="@+id/newsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/default_distance"
+            android:paddingRight="@dimen/default_distance">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -84,8 +76,7 @@
                 android:layout_gravity="top"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp">
+                >
 
                 <TextView
                     android:id="@+id/headline"
@@ -100,25 +91,15 @@
 
                 <TextView
                     android:id="@+id/byline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="4dp"
-                    android:ellipsize="end"
-                    android:gravity="bottom"
-                    android:maxLines="1"
-                    android:textSize="12sp"
+                    style="@style/BylineTextView"
                     tools:text="@string/tools_byAuthor" />
 
             </RelativeLayout>
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="95dp"
-                android:layout_height="95dp"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:contentDescription="@string/img_news"
-                android:scaleType="centerCrop" />
+                style="@style/NewsImageView"
+                android:contentDescription="@string/img_news" />
 
         </LinearLayout>
 

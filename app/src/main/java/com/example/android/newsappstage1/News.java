@@ -1,5 +1,7 @@
 package com.example.android.newsappstage1;
 
+import android.support.annotation.Nullable;
+
 import java.util.Date;
 
 public class News {
@@ -110,8 +112,5 @@ public class News {
     public String getImage() {
         return mNewsImage;
     }
-
-
-
 
 }
