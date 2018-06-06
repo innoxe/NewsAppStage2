@@ -10,12 +10,11 @@
 
     <!-- Layout CardView. -->
     <style name="LayoutCardView">
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginBottom">@dimen/margin_card</item>
         <item name="android:layout_marginLeft">@dimen/margin_card</item>
         <item name="android:layout_marginRight">@dimen/margin_card</item>
-        <item name="android:layout_marginTop">@dimen/margin_card</item>
         <item name="android:background">?attr/selectableItemBackground</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
