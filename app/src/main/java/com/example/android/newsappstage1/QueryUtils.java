@@ -143,7 +143,7 @@ public class QueryUtils {
 
                 // Extract and parse default pattern of the key value "webPublicationDate" with date and hour of publication
                 String webPublicationDate = currentResult.getString("webPublicationDate");
-                SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", java.util.Locale.getDefault());
+                SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", java.util.Locale.getDefault());
 
                 Date dateNews = null;
                 try {

@@ -83,10 +83,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:paddingLeft="12dp"
@@ -100,23 +100,27 @@
                     <TextView
                         android:id="@+id/trailText"
                         style="@style/TrailTextView"
-                        tools:text="Long placeholder location that should wrap to more than 2 lines of text" />
+                        android:layout_below="@+id/headline"
+                        tools:text="Long placeholder trail news that should wrap to more than 2 lines of text " />
 
                     <TextView
                         android:id="@+id/byline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="4dp"
-                        android:paddingTop="4dp"
+                        android:layout_marginBottom="4dp"
                         android:textSize="12sp"
-                        tools:text="By Author" />
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        tools:text="By Author"
+                        android:gravity="bottom"
+                        android:layout_alignParentBottom="true" />
 
-                </LinearLayout>
+                </RelativeLayout>
 
                 <ImageView
                     android:id="@+id/image"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:contentDescription="@string/img_news"
                     android:scaleType="centerCrop" />

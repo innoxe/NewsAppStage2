@@ -2,7 +2,7 @@
     <string name="app_name">News App Stage 1</string>
 
     <!-- Text to display in the list when there are no news in the API [CHAR LIMIT=NONE] -->
-    <string name="no_news">Sorry! There isn\'t news ad the moment.</string>
+    <string name="no_news">Sorry! There isn\'t news at the moment.</string>
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">Sorry! No internet connection.</string>
