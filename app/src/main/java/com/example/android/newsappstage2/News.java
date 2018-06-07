@@ -1,6 +1,4 @@
-package com.example.android.newsappstage1;
-
-import android.support.annotation.Nullable;
+package com.example.android.newsappstage2;
 
 import java.util.Date;
 

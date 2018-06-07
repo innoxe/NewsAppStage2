@@ -1,4 +1,4 @@
-package com.example.android.newsappstage1;
+package com.example.android.newsappstage2;
 
 import android.content.Context;
 import android.graphics.Bitmap;
