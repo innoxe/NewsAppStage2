@@ -27,6 +27,8 @@
     <string name="tools_byAuthor">By Author</string>
 
 
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">News Settings</string>
 
 
 </resources>
