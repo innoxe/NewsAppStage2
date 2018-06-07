@@ -10,8 +10,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -114,10 +116,12 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
+
+
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         // getString retrieves a String value from the preferences.
-        String searchTerm = sharedPrefs.getString(getString(R.string.settings_search_term_key),"DEFAULT");
+        String searchTerm = sharedPrefs.getString(getString(R.string.settings_search_term_key), "");
 
         // parse breaks apart the URI string that's passed into its parameter
         Uri baseUri = Uri.parse(USGS_REQUEST_URL);
@@ -126,7 +130,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         // Append query parameter and its value. For example, the `format=geojson`
-        uriBuilder.appendQueryParameter("q", searchTerm);
+        if(!searchTerm.equals("")) {
+            uriBuilder.appendQueryParameter("q", searchTerm);
+        }
         uriBuilder.appendQueryParameter("page-size", "10");
         uriBuilder.appendQueryParameter("show-fields", "trailText,byline,thumbnail");
         uriBuilder.appendQueryParameter("order-by", "newest");

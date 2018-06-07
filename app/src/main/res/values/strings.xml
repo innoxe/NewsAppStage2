@@ -32,5 +32,4 @@
 
     <string name="settings_search_term_label">Search term</string>
     <string name="settings_search_term_key" translatable="false">search_term</string>
-
 </resources>

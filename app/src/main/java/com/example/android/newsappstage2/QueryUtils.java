@@ -43,6 +43,8 @@ public class QueryUtils {
      */
     public static List<News> fetchNewsData(String requestUrl) {
 
+        Log.v("requestURL", requestUrl);
+
         // Create URL object
         URL url = createUrl(requestUrl);
 
