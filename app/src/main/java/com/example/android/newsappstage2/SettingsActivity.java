@@ -2,7 +2,6 @@ package com.example.android.newsappstage2;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity{
@@ -12,7 +11,8 @@ public class SettingsActivity extends AppCompatActivity{
         setContentView(R.layout.settings_activity);
     }
 
-    public static class EarthquakePreferenceFragment extends PreferenceFragment {
+    public static class NewsPreferenceFragment extends PreferenceFragment {
+
 
     }
 }
