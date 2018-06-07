@@ -5,9 +5,11 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,8 +32,11 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     /**
      * URL of Guardian API
      */
+    //private static final String USGS_REQUEST_URL =
+    //        "http://content.guardianapis.com/search?order-by=newest&show-fields=trailText,byline,thumbnail&page-size=10&api-key=test";
+
     private static final String USGS_REQUEST_URL =
-            "http://content.guardianapis.com/search?order-by=newest&show-fields=trailText,byline,thumbnail&page-size=10&api-key=test";
+            "http://content.guardianapis.com/search";
     /**
      * Adapter for the list of news
      */
@@ -109,8 +114,27 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // getString retrieves a String value from the preferences.
+        String searchTerm = sharedPrefs.getString(getString(R.string.settings_search_term_key),"DEFAULT");
+
+        // parse breaks apart the URI string that's passed into its parameter
+        Uri baseUri = Uri.parse(USGS_REQUEST_URL);
+
+        // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        // Append query parameter and its value. For example, the `format=geojson`
+        uriBuilder.appendQueryParameter("q", searchTerm);
+        uriBuilder.appendQueryParameter("page-size", "10");
+        uriBuilder.appendQueryParameter("show-fields", "trailText,byline,thumbnail");
+        uriBuilder.appendQueryParameter("order-by", "newest");
+        uriBuilder.appendQueryParameter("api-key", "test");
+
+
         // Create a new loader for the given URL
-        return new NewsLoader(this, USGS_REQUEST_URL);
+        return new NewsLoader(this, uriBuilder.toString());
     }
 
     @Override
