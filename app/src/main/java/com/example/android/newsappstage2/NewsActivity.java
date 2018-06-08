@@ -123,6 +123,12 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         // getString retrieves a String value from the preferences.
         String searchTerm = sharedPrefs.getString(getString(R.string.settings_search_term_key), "");
 
+        // getString retrieves a String value from de list preferences Orderby
+        String orderBy = sharedPrefs.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default)
+        );
+
         // parse breaks apart the URI string that's passed into its parameter
         Uri baseUri = Uri.parse(USGS_REQUEST_URL);
 
@@ -135,7 +141,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         }
         uriBuilder.appendQueryParameter("page-size", "10");
         uriBuilder.appendQueryParameter("show-fields", "trailText,byline,thumbnail");
-        uriBuilder.appendQueryParameter("order-by", "newest");
+        uriBuilder.appendQueryParameter("order-by", orderBy);
         uriBuilder.appendQueryParameter("api-key", "test");
 
 
