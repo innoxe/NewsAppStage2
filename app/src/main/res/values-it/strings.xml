@@ -8,4 +8,17 @@
     <string name="ic_time">Icona ora notizia</string>
     <string name="img_news">Image della notiza corrente</string>
     <string name="no_author">Nessun autore</string>
+
+    <string name="settings_menu_item">Impostazioni</string>
+    <string name="settings_title">Impostazioni Notizie</string>
+
+    <string name="settings_search_term_label">Ricerca termine</string>
+    <string name="settings_search_term_key" translatable="false">search_term</string>
+
+    <string name="settings_order_by_label">Ordina per</string>
+
+    <string name="settings_order_by_newest_label">Più recente</string>
+    <string name="settings_order_by_oldest_label">Più vecchio</string>
+    <string name="settings_order_by_relevance_label">Rilevanza</string>
+
 </resources>
