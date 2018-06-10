@@ -32,8 +32,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     /**
      * URL of Guardian API
      */
-    //private static final String USGS_REQUEST_URL =
-    //        "http://content.guardianapis.com/search?order-by=newest&show-fields=trailText,byline,thumbnail&page-size=10&api-key=test";
 
     private static final String USGS_REQUEST_URL =
             "http://content.guardianapis.com/search";
@@ -140,6 +138,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         uriBuilder.appendQueryParameter("page-size", "10");
         uriBuilder.appendQueryParameter("show-fields", "trailText,byline,thumbnail");
         uriBuilder.appendQueryParameter("order-by", orderBy);
+        // Used api-key "test" for only purpose this project
         uriBuilder.appendQueryParameter("api-key", "test");
 
 
