@@ -7,6 +7,9 @@
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">Sorry! No internet connection.</string>
 
+    <!-- Error message when there too many request with the API [CHAR LIMIT=NONE] -->
+    <string name="no_request">Sorry! Too many request with the API. \nTry later.</string>
+
     <!-- String description image -->
     <string name="ic_section">Icon section news</string>
     <string name="ic_date">Icon date news</string>

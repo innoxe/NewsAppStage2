@@ -158,6 +158,16 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         // Clear the adapter of previous news data
         mAdapter.clear();
 
+        //Check if an error occurs in the API. Example for 429 "Too many request".
+        //The request has api-key test that's why it happens often.
+        String checkError = news.get(0).getHeadline();
+        if (checkError.equals("429")){
+            mEmptyStateTextView.setText(R.string.no_request);
+
+            return;
+        }
+
+
         // This will trigger the ListView to update.
         if (news != null && !news.isEmpty()) {
             mAdapter.addAll(news);
