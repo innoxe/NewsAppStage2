@@ -10,4 +10,4 @@ This project is about combining various ideas and skills we’ve been practicing
 - Use Uri.Builder class to add query parameters to the URL
 - Update and display the Preference Summary
 
-<img src="https://raw.githubusercontent.com/innoxe/MusicalStrcutureApp/master/app/src/main/res/drawable/screenshot1.jpg" width="15%"></img>
+<img src="https://raw.githubusercontent.com/innoxe/NewsAppStage2/master/app/src/main/res/drawable/screenshot1.jpg" width="15%"></img>
