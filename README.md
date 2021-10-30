@@ -9,3 +9,5 @@ This project is about combining various ideas and skills we’ve been practicing
 - Launch a Settings Activity from a menu in the Main Activity
 - Use Uri.Builder class to add query parameters to the URL
 - Update and display the Preference Summary
+
+<img src="https://raw.githubusercontent.com/innoxe/MusicalStrcutureApp/master/app/src/main/res/drawable/Screenshot_News App Stage 2.jpg" width="15%"></img>
